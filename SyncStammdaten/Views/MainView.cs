@@ -32,8 +32,13 @@ namespace SyncStammdaten
 
         private void DataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            if (e.Row.DataGridView.Columns.Contains(nameof(BaseEntity.Id))) {
+            if (e.Row.DataGridView.Columns.Contains(nameof(BaseEntity.Id)))
+            {
                 e.Row.Cells[nameof(BaseEntity.Id)].Value = Guid.NewGuid().ToString();
+            }
+            if (e.Row.DataGridView.Columns.Contains(nameof(BaseEntity.Clock)))
+            {
+                e.Row.Cells[nameof(BaseEntity.Clock)].Value = 0;
             }
         }
 
