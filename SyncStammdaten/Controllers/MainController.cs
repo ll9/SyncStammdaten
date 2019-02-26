@@ -18,7 +18,7 @@ namespace SyncStammdaten.Controllers
 
         public MainController(MainView mainView)
         {
-            this._view = mainView;
+            _view = mainView;
             _efContext = new ApplicationDbContext();
             _adoContext = new AdoContext();
             _baseEntityRepo = new BaseEntityRepository(_adoContext);
