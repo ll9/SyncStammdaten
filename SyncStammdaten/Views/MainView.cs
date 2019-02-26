@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SyncStammdaten.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,14 @@ using System.Windows.Forms;
 
 namespace SyncStammdaten
 {
-    public partial class Form1 : Form
+    public partial class MainView : Form
     {
-        public Form1()
+        private MainController _controller;
+
+        public MainView()
         {
             InitializeComponent();
+            _controller = new MainController(this);
         }
     }
 }
