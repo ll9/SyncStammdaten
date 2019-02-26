@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SyncStammdaten.Data;
+using SyncStammdaten.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,17 @@ namespace SyncStammdaten.Controllers
 {
     class MainController
     {
-        private MainView mainView;
+        private MainView _view;
         private ApplicationDbContext _efContext;
         private AdoContext _adoContext;
+        private BaseEntityRepository _baseEntityRepo;
 
         public MainController(MainView mainView)
         {
-            this.mainView = mainView;
+            this._view = mainView;
             _efContext = new ApplicationDbContext();
             _adoContext = new AdoContext();
+            _baseEntityRepo = new BaseEntityRepository(_adoContext);
 
             Initialize();
         }
@@ -27,6 +30,13 @@ namespace SyncStammdaten.Controllers
         {
             _efContext.Database.Migrate();
             _adoContext.Migrate();
+
+            _view.DataSource = _baseEntityRepo.List();
+        }
+
+        internal void SaveChanges(System.Data.DataTable dataSource)
+        {
+            _baseEntityRepo.SaveChanges(dataSource);
         }
     }
 }

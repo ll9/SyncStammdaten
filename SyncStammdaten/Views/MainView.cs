@@ -20,5 +20,12 @@ namespace SyncStammdaten
             InitializeComponent();
             _controller = new MainController(this);
         }
+
+        public DataTable DataSource { get => dataGridView1.DataSource as DataTable; set => dataGridView1.DataSource = value; }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _controller.SaveChanges(DataSource);
+        }
     }
 }
