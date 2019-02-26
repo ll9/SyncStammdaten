@@ -2,6 +2,7 @@
 using SyncStammdaten.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace SyncStammdaten.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(System.Configuration.ConfigurationManager.AppSettings["ConnectionString"]);
+            optionsBuilder.UseSqlite(ConfigurationManager.AppSettings["ConnectionString"]);
             base.OnConfiguring(optionsBuilder);
         }
 

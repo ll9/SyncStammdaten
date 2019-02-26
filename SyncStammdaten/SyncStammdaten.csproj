@@ -171,6 +171,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AdoContext.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -178,6 +179,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190226211621_Init.cs" />
+    <Compile Include="Migrations\20190226211621_Init.designer.cs">
+      <DependentUpon>20190226211621_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\BaseEntityDiff.cs" />
     <Compile Include="Program.cs" />
